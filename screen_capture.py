@@ -65,7 +65,8 @@ class ScreenCapture:
                     self._frame_queue.put_nowait(frame)
                 except Full:
                     try:
-                        _ = self._frame_queue.get_nowait()
+                        discarded_frame = self._frame_queue.get_nowait()
+                        del discarded_frame  # Explicitly discard oldest frame to keep stream fresh.
                     except Exception:
                         pass
                     self._frame_queue.put_nowait(frame)

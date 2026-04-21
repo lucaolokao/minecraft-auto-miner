@@ -80,6 +80,8 @@ class AutoMinerBot:
         max_targets = self.config["detection"]["max_targets_per_frame"]
         idle_sleep = self.config["runtime"]["idle_sleep_seconds"]
         mine_hold = self.config["input"]["mine_hold_seconds"]
+        region_left = self.config["capture"]["region"]["left"]
+        region_top = self.config["capture"]["region"]["top"]
 
         try:
             while not self.stop_event.is_set():
@@ -103,8 +105,8 @@ class AutoMinerBot:
                     for detection in detections[:max_targets]:
                         if self.stop_event.is_set() or self.paused:
                             break
-                        screen_x = self.config["capture"]["region"]["left"] + detection.center[0]
-                        screen_y = self.config["capture"]["region"]["top"] + detection.center[1]
+                        screen_x = region_left + detection.center[0]
+                        screen_y = region_top + detection.center[1]
                         self.input_handler.move_to(
                             (screen_x, screen_y),
                             steps=self.config["input"]["move_steps"],
