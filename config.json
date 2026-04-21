@@ -1,0 +1,34 @@
+{
+  "capture": {
+    "region": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    },
+    "fps_limit": 30
+  },
+  "detection": {
+    "sensitivity": 0.8,
+    "min_pixels": 80,
+    "max_targets_per_frame": 5
+  },
+  "input": {
+    "move_steps": 15,
+    "move_delay": 0.004,
+    "mine_hold_seconds": 0.4,
+    "hotkeys": {
+      "stop": "esc",
+      "pause": "f8",
+      "resume": "f9"
+    }
+  },
+  "runtime": {
+    "idle_sleep_seconds": 0.03,
+    "show_visual_feedback": true,
+    "log_level": "INFO"
+  },
+  "logging": {
+    "file": "bot.log"
+  }
+}
